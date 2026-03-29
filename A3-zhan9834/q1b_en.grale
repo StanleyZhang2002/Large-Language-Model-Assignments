@@ -1,0 +1,3 @@
+!newdata"INITIAL CATEGORY"(S1(0"s")(V2"agr"(S4(3"mgsat(agr)")))(V5"sem"(S7(6"see")(V8"obj"(S10(9"sheep")(V11"quantity"(S13(12"one")))))(V14"subj"(S16(15"wolf")(V17"quantity"(S19(18"two")))))))(V20"subcat"(S22(21"list"))))
+!newdata"liang pi lang kanjian yi zhi yang"(S1(0"s")(V2"agr"(S4(3"mgsat(agr)")))(V5"sem"(S7(6"see")(V8"obj"(S10(9"sheep")(V11"quantity"(S13(12"one")))))(V14"subj"(S16(15"wolf")(V17"quantity"(S19(18"two")))))))(V20"subcat"(L21)))
+!newdata"liang zhi lang kanjian yi zhi yang"(S1(0"s")(V2"agr"(S4(3"mgsat(agr)")))(V5"sem"(S7(6"see")(V8"obj"(S10(9"sheep")(V11"quantity"(S13(12"one")))))(V14"subj"(S16(15"wolf")(V17"quantity"(S19(18"two")))))))(V20"subcat"(L21)))

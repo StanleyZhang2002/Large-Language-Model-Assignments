@@ -1,0 +1,85 @@
+% Student name: Shilin Zhang
+% Student number: 1007065532
+% UTORid: zhan9834
+
+% This code is provided solely for the personal and private use of students
+% taking the CSC485H/2501H course at the University of Toronto. Copying for
+% purposes other than this use is expressly prohibited. All forms of
+% distribution of this code, including but not limited to public repositories on
+% GitHub, GitLab, Bitbucket, or any other online platform, whether as given or
+% with any changes, are expressly prohibited.
+
+% Authors: Ken Shi, Jingcheng Niu and Gerald Penn
+
+% All of the files in this directory and all subdirectories are:
+% Copyright (c) 2024 University of Toronto
+
+2(a)
+28:
+exists x. (student(x) ^ forall y. (course(y) => take(x, y)))
+forall y. (course(y) => exists x. (student(x) ^ take(x, y)))
+30:
+exists x. (student(x) ^ forall y. (course(y) => take(x, y)))
+
+2(e)
+Ambiguous:
+Sentence 1: mei,ge,xuesheng,dou,huishang,yi,zhong,kecheng
+My Translation: 
+a course every student takes
+every student takes a course
+ChatGPT Translation:
+every student attends a course
+every student attends the same course
+
+Unambiguous:
+Sentence 2: yi,ge,xuesheng,huishang,mei,zhong,kecheng
+My Translation:
+every course a student takes
+a student takes every course
+ChatGPT Translation:
+A student will attend every type of course
+
+Gap and Ambiguous:
+Sentence 3: yi zhong kecheng mei ge xuesheng dou huishang
+My Translation:
+a course every student takes.
+every students takes a course.
+ChatGPT Translation:
+Every student will attend this course.
+
+Explanation:
+In my experiment, I have provided the above 2 sentences to both ChatGPT and my TRALE program and ask them to translate them into English.
+I have listed the output of both my TRALE program and ChatGPT and I picked one ambiguous and one unambiguous sentence to examine how ChatGPT perform on quantifier ambiguous.
+
+For sentence 2, the sentence itself is not ambiguous and ChatGPT successfully translate the sentence and I have asked ChatGPT to explain the sentence that I give and it successfully explain that the sentence means there is a student that takes every type of courses.
+It also emphasizes the fact that the student takes variety of courses which shows that ChatGPT correctly understand the sentence.
+However, it does not seem to provide me the sentence that incorporate gaps and I have ask ChatGPT to generate the sentence with the gap structure in order to produce the gap version of the sentence.
+The ChatGPT translate also makes the sentence a big more clear where it emphasize "mei zhong" by specifying "every type of course" which I think is clearer than our translation but I think this is caused my limited lexicon and can be further improved by enlarge the lexicon.
+Overall, when the sentence is not ambiguous, ChatGPT performs equally well compared to our TRALE program and successfully translate the sentence without any ambiguous that reflects the quantifier order of exists > forall.
+
+For sentence 1, the sentence itself is ambiguous and could have 2 possible interpretations and our TRALE program can successfully identify both of the meanings in their translation.
+However, when I give this sentence to ChatGPT, it only gives me one translation of "every student attends a course" which is ambiguous so I asked ChatGPT to explain the meaning of his translation to me to explore how ChatGPT performs under ambiguous sentences.
+ChatGPT responded that it thinks this sentence is a bit unclear on word usage and should be written as "mei ge xuesheng dou huishang tong yi zhong kecheng" meaning that "every student attends the same course" which is the second translation that I put in ChatGPT translation section.
+Then, I asked ChatGPT to explain where it thinks the unclear comes from to further investigate the ambiguity and it responded that it thinks the phrase "yi zhong kecheng" is unclear where it could mean "a type of course", "some course" or "the same course".
+It gives detail explanation of how these different phrases differ where "a type of course" gives some flexibility on course choice where the course belong to same type.
+The second interpretation is much more broader where the course could be any course and the third interpretation is that the course needs to be the same course.
+
+To investigate whether ChatGPT actually handle quantifier ambiguity, I added sentence 3 which has gap and is not ambiguous but still has the phrase "yi zhong kecheng".
+When I ask ChatGPT to translate it, it produce the output listed and once I ask it to further look into whether the sentence is ambiguous or not, I get similar response where the phrase "yi zhong kecheng" is ambiguous and could mean "any course" or "the same course".
+
+Through these two sentence, I think that ChatGPT does not directly handle quantifier ambiguity like what we did in our TRALE program. Where we observe the quantifier logic and use QStore to change the order of quantifier in TRALE.
+It handles the ambiguity through different interpretation of a phrase and if the phrase appears, it will think the sentence is ambiguous. 
+In our example, it has three different interpretation of the phrase "yi zhong kecheng" where two of the interpretations matches the meaning that is listed in our handout.
+In addition, it comes up with another way of interpreting the sentence where the sentence could mean that every student need to take a type of course where our TRALE program did not come up with.
+I think this ambiguity is caused purely by the vague usage of words and I think it is reasonable that our TRALE program did not produce this translation since our TRALE program only considers structure and not consider meaning of the words so it is not possible for our TRALE program to produce this translation given our limited lexicon.
+Overall, I observed that ChatGPT is able to produce different meaning of a sentence with quantifier ambiguity but not by examining structure and quantifier order.
+It produces different meaning of the sentence through different interpretation of any ambiguous phrase and because it considers meaning of the sentence, it could produce more translations than our TRALE program.
+
+Generally speaking, I don't think that ChatGPT is able to detect quantifier ambiguity correctly because through this experiment, I observed that ChatGPT usually uses meaning of words to translate sentences so if it thinks a phrase is ambiguous, it will say that there is an ambiguous.
+However, the translation that ChatGPT produce is more natural and smooth compared to our TRALE program because of its large vocabulary.
+I think this behaviour is expected because ChatGPT is not designed to discover sentence ambiguity.
+It focuses more on grammatically correctness of the sentence and the natural flow of the sentence.
+When there is ambiguous, ChatGPT will usually respond with the most common and natural interpretation instead of all possible interpretations.
+I think this is reasonable since the purpose of ChatGPT is to answer user's questions so unless user ask it to find ambiguity in a sentence, returning the most common translation is a reasonable action.
+On the other hand, our TRALE program are designed to make translations and discover quantifier ambiguity so the correctness of our program should be better than ChatGPT if the sentence is built using our lexicon.
+Thus, I think that ChatGPT can't really discover quantifier ambiguity accurately since it analysis ambiguity through word meaning of ambiguous phrases rather than order of quantifier and structure of the sentence.
